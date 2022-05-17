@@ -8,7 +8,7 @@ checks:
   - resource
   requiredLabels:
   - aws_eks_cluster
-  severity: ERROR
+  severity: WARNING
   matchSpec:
     name: tags
     action: contains
@@ -22,7 +22,7 @@ checks:
   - resource
   requiredLabels:
   - aws_eks_cluster
-  severity: ERROR
+  severity: LOW
   matchSpec:
     name: name
     action: isNone
