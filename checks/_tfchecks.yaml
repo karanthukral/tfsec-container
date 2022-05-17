@@ -1,0 +1,30 @@
+---
+checks:
+- code: CUS001
+  description: Ensure name tag for cluster is present
+  impact: By not having name tag we can't keep track of billing
+  resolution: Add the name tag
+  requiredTypes:
+  - resource
+  requiredLabels:
+  - aws_eks_cluster
+  severity: ERROR
+  matchSpec:
+    name: tags
+    action: contains
+    value: name
+  errorMessage: The required name tag was missing
+- code: CUS002
+  description: Custom check to ensure the name of the eks cluster
+  impact: Can't have eks clusters named insure-cluster
+  resolution: Fix the name
+  requiredTypes:
+  - resource
+  requiredLabels:
+  - aws_eks_cluster
+  severity: ERROR
+  matchSpec:
+    name: name
+    action: isNone
+    value: ["insecure-cluster", "insecure"]
+  errorMessage: The required name was wrong
